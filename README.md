@@ -32,3 +32,4 @@ Permette di fare hot-swap e hot-redeploy di applicativi in Node JS
 2. npm install nodemon
 3. npm install mongoose
 4. npm install bcryptjs
+5. npm install jsonwebtoken
