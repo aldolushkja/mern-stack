@@ -33,3 +33,32 @@ Permette di fare hot-swap e hot-redeploy di applicativi in Node JS
 3. npm install mongoose
 4. npm install bcryptjs
 5. npm install jsonwebtoken
+
+### Docker
+1. Build the image from dockerfile
+
+```shell
+docker build -t <your username>/node-web-app .
+```
+
+2. Run the image
+
+```shell
+docker run -p 49160:8080 -d <your username>/node-web-app
+```
+
+3. Get container ID
+```shell
+docker ps
+```
+
+4. Print app output
+
+```shell
+docker logs <container id>
+```
+
+5. Enter the container
+```shell
+docker exec -it <container id> /bin/bash
+```
