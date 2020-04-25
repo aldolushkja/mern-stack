@@ -15,8 +15,8 @@ module.exports = (req, res, next) => {
         if (err) {
             return res.status(401).json({ error: "Not authorized" });
         }
-        const { _id } = payload;
-        User.findById(_id).then((userData) => {
+        const { id } = payload;
+        User.findById(id).then((userData) => {
             req.user = userData
             next()
         })
