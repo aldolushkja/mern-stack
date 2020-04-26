@@ -27,12 +27,17 @@ nodemon app
 ```
 Permette di fare hot-swap e hot-redeploy di applicativi in Node JS
 
-### Libraries
+### Backend
 1. npm install express
 2. npm install nodemon
 3. npm install mongoose
 4. npm install bcryptjs
 5. npm install jsonwebtoken
+
+### Frontend
+1. npx create-react-app client
+2. npm install react-router-dom
+3. npm start
 
 ### Docker
 1. Build the image from dockerfile
