@@ -60,7 +60,10 @@ router.post("/signin", (req, res) => {
                     if (doMatch) {
                         // return res.json({ message: "successful login! You welcome" })
                         const token = jwt.sign({ id: receivedUser._id }, JWT_SECRET)
-                        return res.json({ token: token })
+                        const {_id, name, email} = receivedUser
+                        return res.json({ token: token, user: {
+                            _id, name, email
+                            } })
                     } else {
                         return res.status(422).json({ error: "Invalid email or password" })
                     }

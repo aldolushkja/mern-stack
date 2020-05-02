@@ -27,7 +27,9 @@ const Signup = () => {
                     M.toast({html: data.message, classes: "#388e3c green darken-2"})
                     history.push("/signin")
                 }
-            })
+            }).catch(err => {
+            console.log(err)
+        })
     }
     return (
         <div className="mycard">
@@ -35,7 +37,7 @@ const Signup = () => {
                 <h2>Instagram</h2>
                 <input type="text" placeholder="name" value={name} onChange={(e) => setName(e.target.value)}/>
                 <input type="text" placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
-                <input type="text" placeholder="password" value={password}
+                <input type="password" placeholder="password" value={password}
                        onChange={(e) => setPassword(e.target.value)}/>
                 <button className="btn waves-effect waves-light #42a5f5 blue darken-1" name="action"
                         onClick={() => postData()}>Signup
