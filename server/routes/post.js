@@ -44,8 +44,8 @@ router.get('/mypost', requireLogin, (req, res) => {
     Post.find({
             postedBy: req.user._id
         }).populate("postedBy", "_id name")
-        .then((posts) => {
-            return res.status(200).json({ posts })
+        .then((mypost) => {
+            return res.status(200).json({ mypost })
         }).catch(error => {
             console.log(error)
         })
