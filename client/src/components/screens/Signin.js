@@ -19,10 +19,12 @@ const Signin = () => {
             })
         }).then(res => res.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 if (data.error) {
                     M.toast({html: data.error, classes: "#c62828 red darken-3"})
                 } else {
+                    localStorage.setItem("jwt", data.token)
+                    localStorage.setItem("user", JSON.stringify(data.user))
                     M.toast({html: "signedin success", classes: "#388e3c green darken-2"})
                     history.push("/")
                 }

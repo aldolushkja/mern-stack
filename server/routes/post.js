@@ -16,8 +16,8 @@ router.get('/allpost', requireLogin, (req, res) => {
 router.post('/createpost', requireLogin, (req, res) => {
     const {
         title,
-        pic,
-        body
+        body,
+        pic
     } = req.body
 
     if (!title || !body || !pic) {
@@ -29,7 +29,7 @@ router.post('/createpost', requireLogin, (req, res) => {
     const post = new Post({
         title: title,
         body: body,
-        pic:pic,
+        photo:pic,
         postedBy: req.user
     })
     post.save().then(result => {
