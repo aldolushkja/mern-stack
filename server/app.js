@@ -10,7 +10,7 @@ const {
 // Mongo DB Connection 
 // =======================
 
-mongoose.connect(MONGOURI, {
+mongoose.connect(MONGOURI || 'localhost/instagram_clone', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
