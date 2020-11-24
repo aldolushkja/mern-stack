@@ -12,7 +12,7 @@ const Home = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        // console.log(result)
+        console.log(result)
         setData(result.posts);
       });
   }, []);
@@ -72,6 +72,35 @@ const Home = () => {
         console.log(err);
       });
   };
+
+  const makeComment = (text, postId) => {
+    fetch("/comment", {
+        method: "PUT",
+        headers: {
+            "Content-type":"application/json",
+            "Authorization":"Bearer "+localStorage.getItem("jwt"),
+        },
+        body:JSON.stringify({
+            postId,
+            text
+        })
+        }).then(res => res.json())
+        .then((result) => {
+            console.log(result);
+    
+            const newData = data.map((item) => {
+              if (item._id == result._id) {
+                return result
+              } else {
+                return item
+              }
+            })
+            setData(newData);
+          }).catch(err => {
+              console.log(err)
+          })
+  }
+
   return (
     <div className="home">
       {data.map((item) => {
@@ -106,7 +135,17 @@ const Home = () => {
               <h6> {item.likes.length} likes </h6>
               <h5> {item.title} </h5>
               <p> {item.body} </p>
+              {item.comments.map(record =>{
+                  return(
+                  <h6 id={record._id}><span style={{fontStyle: "bold", fontWeight: "500",marginRight: "10"}}>{record.postedBy.name}</span>{record.text}</h6>
+                  )
+              })}
+              <form onSubmit={(e) => {
+                  e.preventDefault()
+                  makeComment(e.target[0].value, item._id);
+              }}>
               <input type="text" placeholder="add a comment" />
+              </form>
             </div>
           </div>
         );
