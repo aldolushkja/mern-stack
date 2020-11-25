@@ -137,7 +137,7 @@ const Home = () => {
               <p> {item.body} </p>
               {item.comments.map(record =>{
                   return(
-                  <h6 id={record._id}><span style={{fontStyle: "bold", fontWeight: "500",marginRight: "10"}}>{record.postedBy.name}</span>{record.text}</h6>
+                  <h6 key={record._id} id={record._id}><span style={{fontStyle: "bold", fontWeight: "500",marginRight: "10"}}>{record.postedBy.name}</span>: {record.text}</h6>
                   )
               })}
               <form onSubmit={(e) => {
